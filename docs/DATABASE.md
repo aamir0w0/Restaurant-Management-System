@@ -1,0 +1,2 @@
+# Database
+`database/schema.sql` (idempotent `CREATE TABLE IF NOT EXISTS`, InnoDB, FKs, DECIMAL money, unique order/idempotency keys). Orders snapshot item names/prices and modifiers; menu price edits never alter history. `stock_movements` is an append-only ledger with `UNIQUE(reference_type, reference_id, ingredient_id, movement_type)` to prevent double deduction. No financial history is cascade-deleted; master data is archived with `is_active=0`. There is no migration runner yet: add new versioned files under `backend/database/migrations/` and apply manually.

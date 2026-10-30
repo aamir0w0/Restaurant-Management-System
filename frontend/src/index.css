@@ -1,0 +1,16 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { --c-primary: 15 138 138; --c-primary-hover: 11 112 112; --c-primary-soft: 224 244 244; --c-accent: 242 140 40; --c-accent-soft: 254 240 222; --c-sidebar: 15 43 60; --c-canvas: 244 247 249; --c-ink: 17 31 42; --c-muted: 100 116 130; --c-line: 226 232 238; }
+html, body, #root { height: 100%; }
+body { @apply bg-canvas text-ink font-sans antialiased; }
+@layer components {
+  .input { @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-canvas; }
+  .label { @apply mb-1 block text-xs font-medium text-muted; }
+  .th { @apply px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-muted; }
+  .td { @apply px-4 py-3 text-sm; }
+}
+@media print { body * { visibility: hidden; } #receipt, #receipt * { visibility: visible; } #receipt { position: absolute; left: 0; top: 0; width: 80mm; } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(.55) translateY(24px); } 60% { opacity: 1; transform: scale(1.06); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes ringPulse { 0% { transform: scale(.8); opacity: .7; } 100% { transform: scale(2.1); opacity: 0; } }
+@keyframes bellShake { 0%,100% { transform: rotate(0); } 15% { transform: rotate(14deg); } 30% { transform: rotate(-12deg); } 45% { transform: rotate(9deg); } 60% { transform: rotate(-6deg); } 75% { transform: rotate(3deg); } }
+@keyframes shrink { from { width: 100%; } to { width: 0%; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
